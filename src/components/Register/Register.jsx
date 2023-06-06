@@ -1,15 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import reg from '../../../public/reg.json';
 import { useForm } from "react-hook-form";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 const Register = () => {
-    const {registerUser} = useContext(AuthContext);
+    const {registerUser, updateUserData, logOut} = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         setIsButtonDisabled(watch("password") !== watch("c_password"));
@@ -21,6 +24,16 @@ const Register = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
+            updateUserData(data.name, data.photoURL);
+                logOut()
+                Swal.fire({
+                    position: 'top-bottom',
+                    icon: 'success',
+                    title: 'Registration Successful!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  navigate('/login')
         })
     };
 
@@ -64,13 +77,13 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo</span>
+                                    <span className="label-text">Photo URL</span>
                                 </label>
                                 <input
                                     type="text"
-                                    {...register("photo")}
+                                    {...register("photoURL")}
                                     placeholder="Photo URL"
-                                    name="photo"
+                                    name="photoURL"
                                     className="input input-bordered"
                                     required
                                 />

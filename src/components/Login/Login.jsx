@@ -1,23 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import login from '../../../public/121421-login.json';
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
-    const {signIn} = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('');
+
+    const { signIn } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
 
 
     const onSubmit = (data) => {
+        setSuccess('');
+        setError('');
         console.log(data);
         signIn(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setError('');
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error);
+                setError('Email and password doesn,t match!');
+            })
     };
 
     return (
@@ -53,17 +70,23 @@ const Register = () => {
                                     required
                                 />
                             </div>
-                            
+                            <div>
+                                <p className="text-red-500">
+                                    {error}
+                                </p>
+                            </div>
+
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">
                                     Login
                                 </button>
+
                             </div>
                         </form>
                         <p className="my-4 text-center">
                             New to this site?
                             <Link className="text-orange-600 font-bold" to="/register">
-                                 Signup
+                                Signup
                             </Link>
                         </p>
                         <SocialLogin></SocialLogin>
