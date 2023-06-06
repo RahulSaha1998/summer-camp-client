@@ -4,6 +4,7 @@ import reg from '../../../public/reg.json';
 import { useForm } from "react-hook-form";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
     const {registerUser} = useContext(AuthContext);
@@ -115,7 +116,7 @@ const Register = () => {
                                 Login
                             </Link>{" "}
                         </p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

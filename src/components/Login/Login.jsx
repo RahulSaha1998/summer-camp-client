@@ -4,6 +4,7 @@ import login from '../../../public/121421-login.json';
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
     const {signIn} = useContext(AuthContext)
@@ -65,7 +66,7 @@ const Register = () => {
                                  Signup
                             </Link>
                         </p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

@@ -1,20 +1,32 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Header = () => {
 
-   
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
 
     const navItems = <>
         
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
-        <li> <Link className='font-semibold' to="/allToys">Instructors</Link> </li>
-        <li> <Link className='font-semibold' to="/myToys">Dashboard</Link> </li>
+        <li> <Link className='font-semibold' to="/instructors">Instructors</Link> </li>
+        {user && <>
+            <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
+        </>}
     </>
 
     const btn = <>
-        <button className='btn btn-info'>Log out</button>
+        <button onClick={handleLogOut} className='btn btn-info'>Log out</button>
     </>
 // fixed z-10 bg-opacity-30
     return (
@@ -26,7 +38,7 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {navItems}
-                        {btn}
+                        {user && btn}
                     </ul>
                 </div>
 
@@ -44,7 +56,25 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'><button className='btn btn-outline btn-primary'>Login</button></Link>
+            <div className=' flex items-center gap-4'>
+                    {
+                        user?.email ? <>
+
+                            <div className=' w-12 mt-1'>
+                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                    <img className='rounded-full cursor-pointer' src={user?.photoURL} alt="" />
+                                </div>
+                            </div>
+                            <div className="navbar-center hidden lg:flex">
+                                <ul className="menu menu-horizontal px-1">
+                                    {btn}
+                                </ul>
+                            </div>
+
+                        </>
+                            : <Link to="/login"><button className='btn btn-info'>Login</button></Link>
+                    }
+                </div>
             </div>
         </div>
 
