@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import reg from '../../../public/reg.json';
 import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
+    const {registerUser} = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
@@ -14,6 +16,11 @@ const Register = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+        registerUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
     };
 
     return (

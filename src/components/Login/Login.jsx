@@ -2,13 +2,21 @@ import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import login from '../../../public/121421-login.json';
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
+    const {signIn} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
 
 
     const onSubmit = (data) => {
         console.log(data);
+        signIn(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
     };
 
     return (
