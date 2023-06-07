@@ -20,6 +20,7 @@ const Header = () => {
         
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
         <li> <Link className='font-semibold' to="/instructors">Instructors</Link> </li>
+        <li> <Link className='font-semibold' to="/classes">Classes</Link> </li>
         {user && <>
             <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
         </>}
