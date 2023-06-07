@@ -8,33 +8,51 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 
 const Register = () => {
-    const {registerUser, updateUserData, logOut} = useContext(AuthContext);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { registerUser, updateUserData, logOut } = useContext(AuthContext);
+    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const navigate = useNavigate();
+    const [role, setRole] = useState("student");
+    
 
 
     useEffect(() => {
         setIsButtonDisabled(watch("password") !== watch("c_password"));
     }, [watch("password"), watch("c_password")]);
 
-    const onSubmit = (data) => {
-        console.log(data);
-        registerUser(data.email, data.password)
-        .then(result => {
+    const onSubmit = async (data) => {
+        try {
+            const result = await registerUser(data.email, data.password);
             const loggedUser = result.user;
             console.log(loggedUser);
-            updateUserData(data.name, data.photoURL);
-                logOut()
+
+            await updateUserData(data.name, data.photoURL);
+
+            const saveUser = { name: data.name, email: data.email, role: role };
+            const response = await fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveUser)
+            });
+
+            const responseData = await response.json();
+            if (responseData.insertedId) {
+                logOut();
                 Swal.fire({
-                    position: 'top-bottom',
+                    position: 'top-end',
                     icon: 'success',
-                    title: 'Registration Successful!',
+                    title: 'User created successfully.',
                     showConfirmButton: false,
                     timer: 1500
-                  })
-                  navigate('/login')
-        })
+                });
+                reset();
+                navigate('/login');
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -60,7 +78,7 @@ const Register = () => {
                                     name="name"
                                     className="input input-bordered"
                                 />
-                                
+
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -125,7 +143,7 @@ const Register = () => {
                         <p className="my-4 text-center">
                             Already have an account?
                             <Link
-                            className="text-orange-600 font-bold" to="/login">
+                                className="text-orange-600 font-bold" to="/login">
                                 Login
                             </Link>{" "}
                         </p>
@@ -133,7 +151,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 };

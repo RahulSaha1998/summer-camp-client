@@ -12,7 +12,8 @@ import Register from './components/Register/Register';
 import AuthProvider from './providers/AuthProvider';
 import PrivateRoute from './route/PrivateRoute';
 import Dashboard from './layout/Dashboard';
-import InstructorDashboard from './components/Dashboard/InstructorDashboard/InstructorDashboard';
+import AddClass from './components/Dashboard/InstructorDashboard/AddClass';
+import MyClass from './components/Dashboard/InstructorDashboard/MyClass';
 
 
 const router = createBrowserRouter([
@@ -40,9 +41,14 @@ const router = createBrowserRouter([
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
-          path: 'instructor-dashboard',
-          element: <InstructorDashboard></InstructorDashboard>
-        }
+          path: 'instructor/addClass',
+          element: <AddClass></AddClass>
+        },
+        {
+          path: 'instructor/myClass',
+          element: <MyClass></MyClass>,
+          loader: () => fetch('http://localhost:5000/class')
+        },
       ]
   }
 ]);

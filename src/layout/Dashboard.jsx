@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
+import { FaPlusCircle, FaSave } from 'react-icons/fa'
 
 const Dashboard = () => {
     return (
@@ -8,12 +9,19 @@ const Dashboard = () => {
                 <Outlet></Outlet>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side bg-pink-400">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-80">
                     {/* Sidebar content here */}
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    <li><NavLink to='/dashboard/instructor/addClass' className='font-semibold'><FaPlusCircle />Add a class</NavLink></li>
+                    <li><NavLink to='/dashboard/instructor/myClass' className='font-semibold'><FaSave />My Class</NavLink></li>
+
+                    <div className="divider"></div>
+
+                    <li> <NavLink className='font-semibold' to="/">Home</NavLink> </li>
+                    <li> <NavLink className='font-semibold' to="/instructors">Instructors</NavLink> </li>
+                    <li> <NavLink className='font-semibold' to="/classes">Classes</NavLink> </li>
+
                 </ul>
 
             </div>
