@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
 
@@ -8,6 +9,46 @@ const ManageUsers = () => {
         const res = await fetch('http://localhost:5000/users')
         return res.json();
     })
+
+    const handelMakeInstructor = (user) => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${user.name} is an Instructor Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
+
+    // const handelMakeAdmin= (user) => {
+    //     fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    //         method: 'PATCH'
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         if(data.modifiedCount){
+    //             refetch();
+    //             Swal.fire({
+    //                 position: 'top-end',
+    //                 icon: 'success',
+    //                 title: `${user.name} is an Admin Now!`,
+    //                 showConfirmButton: false,
+    //                 timer: 1500
+    //               })
+    //         }
+    //     })
+    // }
 
     return (
         <div>
@@ -32,9 +73,13 @@ const ManageUsers = () => {
                                     <th>{index + 1}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td><button className='btn btn-primary'>{user.role}</button></td>
-                                    <td><button className="btn btn-outline btn-primary">Made Instructor</button></td>
-                                    <td><button className="btn btn-outline btn-primary">Made Admin</button></td>
+                                    <td>{user.role}</td>
+                                    <td><button
+                                    onClick={()=>handelMakeInstructor(user)}
+                                    className="btn btn-outline btn-primary">Make Instructor</button></td>
+                                    <td><button 
+                                    onClick={()=>handelMakeAdmin(user)}
+                                    className="btn btn-outline btn-primary">Make Admin</button></td>
                                 </tr>)
                         }
 
@@ -46,3 +91,5 @@ const ManageUsers = () => {
 };
 
 export default ManageUsers;
+
+
