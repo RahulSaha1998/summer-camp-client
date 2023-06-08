@@ -14,6 +14,11 @@ import PrivateRoute from './route/PrivateRoute';
 import Dashboard from './layout/Dashboard';
 import AddClass from './components/Dashboard/InstructorDashboard/AddClass';
 import MyClass from './components/Dashboard/InstructorDashboard/MyClass';
+import ManageUsers from './components/Dashboard/AdminDashboard/ManageUsers/ManageUsers';
+import ManageClass from './components/Dashboard/AdminDashboard/ManageClass/ManageClass';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 
 const router = createBrowserRouter([
@@ -41,6 +46,14 @@ const router = createBrowserRouter([
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
+          path: 'admin/manageClass',
+          element: <ManageClass></ManageClass>
+        },
+        {
+          path: 'admin/manageUsers',
+          element: <ManageUsers></ManageUsers>
+        },
+        {
           path: 'instructor/addClass',
           element: <AddClass></AddClass>
         },
@@ -56,7 +69,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>
 )

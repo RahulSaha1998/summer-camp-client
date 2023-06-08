@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Loader from "../Loader/Loader";
+import Banner from "../Banner/Banner";
 
 const Home = () => {
 
@@ -13,7 +14,7 @@ const Home = () => {
     }
     return (
         <div>
-           {/* <Banner></Banner> */}
+           <Banner></Banner>
         </div>
     );
 };
