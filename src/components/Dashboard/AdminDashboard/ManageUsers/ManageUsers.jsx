@@ -76,9 +76,11 @@ const ManageUsers = () => {
                                     <td>{user.role}</td>
                                     <td><button
                                     onClick={()=>handelMakeInstructor(user)}
+                                    disabled={user.role === 'instructor' || user.role === 'admin'}
                                     className="btn btn-outline btn-primary">Make Instructor</button></td>
                                     <td><button 
                                     onClick={()=>handelMakeAdmin(user)}
+                                    disabled={user.role === 'instructor' || user.role === 'admin'}
                                     className="btn btn-outline btn-primary">Make Admin</button></td>
                                 </tr>)
                         }
