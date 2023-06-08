@@ -17,6 +17,8 @@ import MyClass from './components/Dashboard/InstructorDashboard/MyClass';
 import ManageUsers from './components/Dashboard/AdminDashboard/ManageUsers/ManageUsers';
 import ManageClass from './components/Dashboard/AdminDashboard/ManageClass/ManageClass';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AdminRoute from './route/AdminRoute';
+import InstructorRoute from './route/InstructorRoute';
 
 const queryClient = new QueryClient()
 
@@ -47,19 +49,19 @@ const router = createBrowserRouter([
       children: [
         {
           path: 'admin/manageClass',
-          element: <ManageClass></ManageClass>
+          element: <AdminRoute><ManageClass></ManageClass></AdminRoute>
         },
         {
           path: 'admin/manageUsers',
-          element: <ManageUsers></ManageUsers>
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
           path: 'instructor/addClass',
-          element: <AddClass></AddClass>
+          element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
         },
         {
           path: 'instructor/myClass',
-          element: <MyClass></MyClass>,
+          element: <InstructorRoute><MyClass></MyClass></InstructorRoute>,
           loader: () => fetch('http://localhost:5000/class')
         },
       ]
