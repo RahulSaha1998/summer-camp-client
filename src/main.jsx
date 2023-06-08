@@ -64,8 +64,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'instructor/myClass',
-          element: <InstructorRoute><MyClass></MyClass></InstructorRoute>,
-          loader: () => fetch('http://localhost:5000/class')
+          element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
         },
         {
           path: 'instructor/update/:id',

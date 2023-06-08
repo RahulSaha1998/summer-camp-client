@@ -1,14 +1,26 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 import MyClassBody from "./MyClassBody";
+import useAuth from "../../../hooks/useAuth";
 
 
 const MyClass = () => {
 
-    const loadedData = useLoaderData();
-    const [classItems, SetClassItems] = useState(loadedData);
+    const [classItems, SetClassItems] = useState([]);
+    const { user } = useAuth()
 
-    console.log(loadedData);
+
+    const url = `http://localhost:5000/someClass?email=${user?.email}`;
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                SetClassItems(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, [])
+
 
 
     return (
@@ -34,10 +46,10 @@ const MyClass = () => {
                 </thead>
                 <tbody>
                     {classItems.map((ct, index) => (
-                        <MyClassBody 
-                        key={ct._id} 
-                        index={index} 
-                        ct={ct}
+                        <MyClassBody
+                            key={ct._id}
+                            index={index}
+                            ct={ct}
                         />
                     ))}
                 </tbody>
