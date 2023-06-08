@@ -49,7 +49,8 @@ const router = createBrowserRouter([
       children: [
         {
           path: 'admin/manageClass',
-          element: <AdminRoute><ManageClass></ManageClass></AdminRoute>
+          element: <AdminRoute><ManageClass></ManageClass></AdminRoute>,
+          loader: () => fetch('http://localhost:5000/class')
         },
         {
           path: 'admin/manageUsers',

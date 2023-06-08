@@ -5,10 +5,10 @@ import MyClassBody from "./MyClassBody";
 
 const MyClass = () => {
 
-    const loadedToys = useLoaderData();
-    const [classItems, SetClassItems] = useState(loadedToys);
+    const loadedData = useLoaderData();
+    const [classItems, SetClassItems] = useState(loadedData);
 
-    console.log(loadedToys);
+    console.log(loadedData);
 
 
 
@@ -18,7 +18,7 @@ const MyClass = () => {
     return (
         <div className="overflow-x-auto shadow-xl">
             <div className='text-center text-3xl font-bold mb-5'>
-                <h2>All Class</h2>
+                <h2>My Class</h2>
             </div>
             <table className="table w-full">
                 <thead>
@@ -31,7 +31,9 @@ const MyClass = () => {
                         <th className='text-center'>Seat</th>
                         <th className='text-center'>Price</th>
                         <th className='text-center'>Status</th>
+                        <th className='text-center'>Enrolled Class</th>
                         <th className='text-center'>Feedback</th>
+                        <th className='text-center'>Action</th>
                     </tr>
                 </thead>
                 <tbody>

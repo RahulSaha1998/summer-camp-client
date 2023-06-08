@@ -1,11 +1,8 @@
+import React from 'react';
 
+const ManageClassTable = ({ct, index}) => {
 
-const MyClassBody = ({ct, index}) => {
-
-    const { _id,  price, instructor_name, email, image, class_name, seat, status, feedback, enClass } = ct;
-
-    // const { user } = useContext(AuthContext);
-
+    const { _id,  price, instructor_name, email, image, class_name, seat, status } = ct;
 
 
     return (
@@ -25,13 +22,10 @@ const MyClassBody = ({ct, index}) => {
                 <td className='text-center'>{seat}</td>
                 <td className='text-center'>{'$' + price}</td>
                 <td className='text-center'><button className="btn btn-sm">{status}</button></td>
-                <td className='text-center'>{enClass}</td>
-                <td className='text-center'>{feedback}</td>
-                <td className='text-center'><button className="btn btn-outline btn-primary">Update</button></td>
                 
             </tr>
         </>
     );
 };
 
-export default MyClassBody;
+export default ManageClassTable;

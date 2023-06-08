@@ -7,6 +7,8 @@ const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddClass = () => {
     const [status, setStatus] = useState("pending");
+    const [enClass, setEnClass] = useState(0);
+    const [feedback, setFeedback] = useState("N/A");
     const { user } = useContext(AuthContext);
 
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
@@ -41,6 +43,8 @@ const AddClass = () => {
                         price,
                         seat,
                         status,
+                        enClass,
+                        feedback,
                         image: imgURL
                     };
                     console.log(addedClass);
@@ -141,7 +145,7 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text">Price*</span>
                         </label>
-                        <input type="number" placeholder="Product Price"
+                        <input type="number" placeholder=" Price"
                             name='price'
                             className="input input-bordered"
                             required />
