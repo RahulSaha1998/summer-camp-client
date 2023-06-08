@@ -30,25 +30,25 @@ const ManageUsers = () => {
         })
     }
 
-    // const handelMakeAdmin= (user) => {
-    //     fetch(`http://localhost:5000/users/admin/${user._id}`, {
-    //         method: 'PATCH'
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         if(data.modifiedCount){
-    //             refetch();
-    //             Swal.fire({
-    //                 position: 'top-end',
-    //                 icon: 'success',
-    //                 title: `${user.name} is an Admin Now!`,
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //               })
-    //         }
-    //     })
-    // }
+    const handelMakeAdmin= (user) => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${user.name} is an Admin Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
 
     return (
         <div>
