@@ -11,10 +11,6 @@ const MyClass = () => {
     console.log(loadedData);
 
 
-
-
-
-
     return (
         <div className="overflow-x-auto shadow-xl">
             <div className='text-center text-3xl font-bold mb-5'>
@@ -38,7 +34,11 @@ const MyClass = () => {
                 </thead>
                 <tbody>
                     {classItems.map((ct, index) => (
-                        <MyClassBody key={ct._id} index={index} ct={ct} />
+                        <MyClassBody 
+                        key={ct._id} 
+                        index={index} 
+                        ct={ct}
+                        />
                     ))}
                 </tbody>
             </table>

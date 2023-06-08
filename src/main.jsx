@@ -14,11 +14,13 @@ import PrivateRoute from './route/PrivateRoute';
 import Dashboard from './layout/Dashboard';
 import AddClass from './components/Dashboard/InstructorDashboard/AddClass';
 import MyClass from './components/Dashboard/InstructorDashboard/MyClass';
+import UpdateClass from './components/Dashboard/InstructorDashboard/UpdateClass';
 import ManageUsers from './components/Dashboard/AdminDashboard/ManageUsers/ManageUsers';
 import ManageClass from './components/Dashboard/AdminDashboard/ManageClass/ManageClass';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AdminRoute from './route/AdminRoute';
 import InstructorRoute from './route/InstructorRoute';
+
 
 const queryClient = new QueryClient()
 
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-      path: 'dashboard',
+      path: '/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
@@ -65,6 +67,11 @@ const router = createBrowserRouter([
           element: <InstructorRoute><MyClass></MyClass></InstructorRoute>,
           loader: () => fetch('http://localhost:5000/class')
         },
+        {
+          path: 'instructor/update/:id',
+          element: <InstructorRoute><UpdateClass/></InstructorRoute>,
+          loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`)
+        }
       ]
   }
 ]);
