@@ -11,13 +11,16 @@ const useAdmin = () => {
         queryKey: ['isAdmin', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`, {
-                headers: {
-                    authorization: `bearer ${token}`
-                }
-            });
-            
-            return res.data.admin;
+            if (user?.email) {
+                const res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`, {
+                    headers: {
+                        authorization: `bearer ${token}`
+                    }
+                });
+
+                return res.data.admin;
+            }
+            return false;
         }
     })
     return [isAdmin, isAdminLoading]
