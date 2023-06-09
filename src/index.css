@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --body_background: white;
+    --body_color: black;
+    --link_color: navy;
+}
+
+[data-theme="dark"]{
+    --body_background: #282c34;
+    --body_color: white;
+    --link_color: cyan;
+    
+}
+
+/* * {
+    transition: all 0.3s ease-in-out;
+} */
+
 .drawer-side a.active {
     color: white
 }

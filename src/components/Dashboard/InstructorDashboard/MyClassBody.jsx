@@ -35,7 +35,7 @@ const MyClassBody = ({ct, index}) => {
                 <Link to={`/dashboard/instructor/update/${_id}`}>
                     <button
                 onClick={()=> handelUpdate(_id)}
-                className="btn btn-outline btn-primary">Update</button></Link>
+                className="btn btn-outline btn-primary">Edit</button></Link>
                 </td>
                 
             </tr>

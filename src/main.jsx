@@ -20,6 +20,7 @@ import ManageClass from './components/Dashboard/AdminDashboard/ManageClass/Manag
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AdminRoute from './route/AdminRoute';
 import InstructorRoute from './route/InstructorRoute';
+import Instructors from './components/Instructors/Instructors';
 
 
 const queryClient = new QueryClient()
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
+      {
+        path: '/instructors',
+        element: <Instructors></Instructors>,
+        // loader: () => fetch('http://localhost:5000/users')
+      },
       
     ]
   },
@@ -52,7 +58,6 @@ const router = createBrowserRouter([
         {
           path: 'admin/manageClass',
           element: <AdminRoute><ManageClass></ManageClass></AdminRoute>,
-          // loader: () => fetch('http://localhost:5000/class')
         },
         {
           path: 'admin/manageUsers',

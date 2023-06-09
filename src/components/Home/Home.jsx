@@ -1,21 +1,28 @@
-// import Banner from "../Banner/Banner";
 
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import Loader from "../Loader/Loader";
 import Banner from "../Banner/Banner";
+import useAuth from "../../hooks/useAuth";
+import DarkMode from "../../DarkMode/DarkMode";
 
 const Home = () => {
 
-    const { loading } = useContext(AuthContext);
+    const { loading } = useAuth();
 
     if (loading) {
         return <Loader></Loader>
     }
     return (
+        <>
         <div>
-           <Banner></Banner>
+            <DarkMode></DarkMode>
         </div>
+            <div>
+                <div>
+                    <Banner></Banner>
+                </div>
+            </div>
+        </>
+
     );
 };
 

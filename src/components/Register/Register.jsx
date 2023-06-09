@@ -28,7 +28,7 @@ const Register = () => {
 
             await updateUserData(data.name, data.photoURL);
 
-            const saveUser = { name: data.name, email: data.email, role: role };
+            const saveUser = { name: data.name, email: data.email, role: role, image: data.photoURL };
             const response = await fetch('http://localhost:5000/users', {
                 method: 'POST',
                 headers: {
