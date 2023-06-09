@@ -1,9 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import React, { useRef, useState } from 'react';
+
+
 
 const ManageClass = () => {
     const token = localStorage.getItem('access-token');
+    const modalRef = useRef(null);
+    const [feedback, setFeedback] = useState('');
+    const [selectedItemId, setSelectedItemId] = useState(null);
 
     const { data: cart = [], refetch } = useQuery(['class'], async () => {
         const res = await axios.get('http://localhost:5000/class', {
@@ -13,6 +19,43 @@ const ManageClass = () => {
         });
         return res.data;
     });
+
+
+    const handleCloseModal = () => {
+        setFeedback('');
+        setSelectedItemId(null);
+        modalRef.current.close();
+    };
+
+    const handleOpenModal = (item) => {
+        setFeedback(item.feedback);
+        setSelectedItemId(item._id);
+        modalRef.current.showModal();
+    };
+
+    const handleUpdateFeedback = async () => {
+        try {
+            const res = await axios.patch(
+                `http://localhost:5000/users/feedback/${selectedItemId}`,
+                { feedback }
+            );
+            if (res.data.modifiedCount) {
+                refetch();
+                handleCloseModal();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Feedback updated!',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
 
 
     const handelApproved = (item) => {
@@ -36,7 +79,7 @@ const ManageClass = () => {
             })
     }
 
-
+   
 
     return (
         <div className="overflow-x-auto shadow-xl">
@@ -80,7 +123,30 @@ const ManageClass = () => {
                                     <button className="btn btn-sm">{item.status}</button>
                                 </td>
                                 <td className="text-center">
-                                    
+                        
+                                    <button className="btn" onClick={() => handleOpenModal(item)}>
+                                        Open Modal
+                                    </button>
+                                    <dialog id="my_modal_1" className="modal" ref={modalRef}>
+                                        <form method="dialog" className="modal-box">
+                                            <h3 className="font-bold text-lg">Feedback</h3>
+                                            <textarea
+                                                className="textarea textarea-info"
+                                                value={feedback}
+                                                onChange={(e) => setFeedback(e.target.value)}
+                                            ></textarea>
+
+                                            <div className="modal-action">
+                                                <button className="btn" onClick={handleCloseModal}>
+                                                    Close
+                                                </button>
+                                                <button className="btn" onClick={handleUpdateFeedback}>
+                                                    Update
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </dialog>
+
                                 </td>
                                 <td className="text-center gap-2 flex flex-col">
                                     <button onClick={() => handelApproved(item)} className="text-center btn btn-success">Approved</button>
