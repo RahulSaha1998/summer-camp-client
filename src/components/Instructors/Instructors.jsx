@@ -4,9 +4,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
+import useAuth from '../../hooks/useAuth';
+import Loader from '../Loader/Loader';
 
 
 const Instructors = () => {
+
+    const {loading} = useAuth();
+
+    if(loading){
+        return <Loader></Loader>
+    }
+
 
     const handleFavoriteButton = () => {
         toast("WOW! Let's Explore Our Class!");

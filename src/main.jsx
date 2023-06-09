@@ -21,6 +21,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AdminRoute from './route/AdminRoute';
 import InstructorRoute from './route/InstructorRoute';
 import Instructors from './components/Instructors/Instructors';
+import ApprovedClass from './components/ApprovedClass/ApprovedClass';
 
 
 const queryClient = new QueryClient()
@@ -46,7 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors></Instructors>,
-        // loader: () => fetch('http://localhost:5000/users')
+      },
+      {
+        path: '/classes',
+        element: <ApprovedClass></ApprovedClass>,
       },
       
     ]
