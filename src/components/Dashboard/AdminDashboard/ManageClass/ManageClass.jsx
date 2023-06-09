@@ -79,6 +79,27 @@ const ManageClass = () => {
             })
     }
 
+    const handelDenied = (item) => {
+        fetch(`http://localhost:5000/users/denied/${item._id}`, {
+            method: 'PATCH',
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Denied this Class!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    }
+
    
 
     return (
@@ -124,8 +145,8 @@ const ManageClass = () => {
                                 </td>
                                 <td className="text-center">
                         
-                                    <button className="btn" onClick={() => handleOpenModal(item)}>
-                                        Open Modal
+                                    <button className="btn btn-outline btn-success" onClick={() => handleOpenModal(item)}>
+                                        Send Feedback
                                     </button>
                                     <dialog id="my_modal_1" className="modal" ref={modalRef}>
                                         <form method="dialog" className="modal-box">
@@ -149,8 +170,15 @@ const ManageClass = () => {
 
                                 </td>
                                 <td className="text-center gap-2 flex flex-col">
-                                    <button onClick={() => handelApproved(item)} className="text-center btn btn-success">Approved</button>
-                                    <button className="text-center btn btn-warning">Denied</button>
+                                    <button 
+                                    onClick={() => handelApproved(item)}
+                                    disabled={item.status === 'approved' || item.status === 'denied'}
+                                    className="text-center btn btn-success">Approve</button>
+
+                                    <button 
+                                    onClick={() => handelDenied(item)}
+                                    disabled={item.status === 'approved' || item.status === 'denied'}
+                                    className="text-center btn btn-warning">Deny</button>
                                 </td>
                             </tr>
                         ))}
