@@ -24,6 +24,8 @@ import Instructors from './components/Instructors/Instructors';
 import ApprovedClass from './components/ApprovedClass/ApprovedClass';
 import MySelectedClass from './components/Dashboard/StudentDashoard/MySelectedClass';
 import MyEnrolledClass from './components/Dashboard/StudentDashoard/MyEnrolledClass';
+import StudentPayment from './components/Dashboard/StudentDashoard/StudentPayment/StudentPayment';
+
 
 
 const queryClient = new QueryClient()
@@ -68,6 +70,11 @@ const router = createBrowserRouter([
         {
           path: 'student/myEnrolledClass',
           element: <MyEnrolledClass></MyEnrolledClass>,
+        },
+        {
+          path: 'student/payment',
+          element: <StudentPayment></StudentPayment>,
+          // loader: ({ params }) => fetch(`http://localhost:5000/carts/${params.id}`)
         },
         {
           path: 'admin/manageClass',

@@ -2,8 +2,13 @@ import React from 'react';
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
 import { FaTrashAlt } from 'react-icons/fa'
+import { Link, useLocation } from 'react-router-dom';
+import SectionTitle from '../../SectionTitle/SectionTitle';
 
 const MySelectedClass = () => {
+
+    //     const navigate = useNavigate();
+    //   const location = useLocation();
 
     const [cart, refetch] = useCart();
 
@@ -41,12 +46,15 @@ const MySelectedClass = () => {
         });
     };
 
+    const handelPayment = (price)=>{
+        console.log(price);
+       
+    }
+
     return (
         <div>
             <div className="overflow-x-auto shadow-xl">
-                <div className='text-center text-3xl font-bold mb-5'>
-                    <h2>Selected Class</h2>
-                </div>
+                <SectionTitle heading='Selected Class' />
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -81,13 +89,30 @@ const MySelectedClass = () => {
                                     <td className="text-center">{item.seat}</td>
                                     <td className="text-center">{'$' + item.price}</td>
                                     <td className="text-center">
+                                        {/* <Link to='/dashboard/student/payment'>
                                         <button
+                                        onClick={()=>handelPayment(item.price)}
                                             className="text-center btn btn-info">Pay</button>
+                                        </Link> */}
+                                        <Link
+                                            to={{
+                                                pathname: '/dashboard/student/payment',
+                                                search: `?amount=${item.price}`,
+                                            }}
+                                        >
+                                            <button
+                                                onClick={() => handelPayment(item.price)}
+                                                className="text-center btn btn-info"
+                                            >
+                                                Pay
+                                            </button>
+                                        </Link>
+
                                     </td>
                                     <td className="text-center">
                                         <button
-                                        onClick={()=>handelDeleteClass(item._id)}
-                                            className="text-center btn btn-info"><FaTrashAlt/></button>
+                                            onClick={() => handelDeleteClass(item._id)}
+                                            className="text-center btn btn-info"><FaTrashAlt /></button>
                                     </td>
                                 </tr>
                             ))}
