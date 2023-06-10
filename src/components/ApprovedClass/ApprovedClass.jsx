@@ -6,20 +6,23 @@ import { FaArrowRight, FaHeart } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import useAdmin from '../../hooks/useAdmin';
-// import useInstructor from '../../hooks/useInstructor';
+import useCart from '../../hooks/useCart';
+import { useEffect, useState } from 'react';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 
 
 
 const ApprovedClass = () => {
-    // const [enrolledClasses, setEnrolledClasses] = useState([]);
     const { loading, user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
 
-    // const [isAdmin] = useAdmin();
-    // const [isInstructor] = useInstructor();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    // const [cart] = useCart();
+
 
 
     const token = localStorage.getItem('access-token');
@@ -42,15 +45,10 @@ const ApprovedClass = () => {
     };
 
     const handelEnroll = item => {
+
         console.log(item);
 
         if (user && user.email) {
-            // const alreadyEnrolled = enrolledClasses.some((enrolledClass) => enrolledClass.classId === item._id);
-
-            // if (alreadyEnrolled) {
-            //     toast.error('You have already enrolled in this class.');
-            // }
-
             const cartItem = {
                 classId: item._id,
                 class_name: item.class_name,
@@ -99,6 +97,7 @@ const ApprovedClass = () => {
                 }
             })
         }
+
     }
 
 
@@ -129,7 +128,7 @@ const ApprovedClass = () => {
                                     <button
                                         onClick={() => handelEnroll(item)}
                                         className="btn btn-info"
-                                        disabled={item.seat === 0  }
+                                        disabled={item.seat === 0 || isAdmin || isInstructor }
                                     >Enroll<FaArrowRight /></button>
                                 </div>
                             </div>
@@ -146,3 +145,5 @@ const ApprovedClass = () => {
 export default ApprovedClass;
 
 // enrolledClasses.some((enrolledClass) => enrolledClass.classId === item._id)
+
+
