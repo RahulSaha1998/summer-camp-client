@@ -1,34 +1,3 @@
-// import React from 'react';
-// import SectionTitle from '../../../SectionTitle/SectionTitle';
-// import PaymentCheckoutForm from './PaymentChekOutForm';
-// import { loadStripe } from '@stripe/stripe-js';
-// import { Elements } from '@stripe/react-stripe-js';
-// import { useLocation } from 'react-router-dom';
-
-// const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
-
-// const StudentPayment = () => {
-
-//     const location = useLocation();
-//     const searchParams = new URLSearchParams(location.search);
-//     const price = parseFloat(searchParams.get('amount') || 0).toFixed(2);
-
-//     return (
-//         <div className='w-full'>
-//             <SectionTitle subHeading='Please pay for your selected class' heading='Payment' />
-//             <h2>Hello from payment</h2>
-//             <p>Total Price: ${price}</p>
-//             <Elements stripe={stripePromise}>
-//                 <PaymentCheckoutForm price={price}></PaymentCheckoutForm>
-//             </Elements>
-//         </div>
-//     );
-// };
-
-// export default StudentPayment;
-
-
-
 import React from 'react';
 import SectionTitle from '../../../SectionTitle/SectionTitle';
 import PaymentCheckoutForm from './PaymentChekOutForm';
