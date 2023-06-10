@@ -38,7 +38,8 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/instructor/myClass' className='font-semibold'><FaSave />My Class</NavLink></li>
                             </>
                                 : <>
-                                    <li><NavLink to='/dashboard/instructor/addClass' className='font-semibold'><FaPlusCircle />Hello Ji</NavLink></li>
+                                    <li><NavLink to='/dashboard/student/mySelectedClass' className='font-semibold'><FaPlusCircle />My Selected Class</NavLink></li>
+                                    <li><NavLink to='/dashboard/student/myEnrolledClass' className='font-semibold'><FaPlusCircle />My Enrolled Class</NavLink></li>
                                 
                                 </>
                     }

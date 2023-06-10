@@ -22,6 +22,8 @@ import AdminRoute from './route/AdminRoute';
 import InstructorRoute from './route/InstructorRoute';
 import Instructors from './components/Instructors/Instructors';
 import ApprovedClass from './components/ApprovedClass/ApprovedClass';
+import MySelectedClass from './components/Dashboard/StudentDashoard/MySelectedClass';
+import MyEnrolledClass from './components/Dashboard/StudentDashoard/MyEnrolledClass';
 
 
 const queryClient = new QueryClient()
@@ -51,7 +53,6 @@ const router = createBrowserRouter([
       {
         path: '/classes',
         element: <ApprovedClass></ApprovedClass>
-
       },
       
     ]
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
       path: '/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        {
+          path: 'student/mySelectedClass',
+          element: <MySelectedClass></MySelectedClass>,
+        },
+        {
+          path: 'student/myEnrolledClass',
+          element: <MyEnrolledClass></MyEnrolledClass>,
+        },
         {
           path: 'admin/manageClass',
           element: <AdminRoute><ManageClass></ManageClass></AdminRoute>,
