@@ -11,6 +11,7 @@ const Home = () => {
     if (loading) {
         return <Loader></Loader>
     }
+
     return (
         <>
         <div>

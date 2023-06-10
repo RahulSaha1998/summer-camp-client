@@ -50,7 +50,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/classes',
-        element: <ApprovedClass></ApprovedClass>,
+        element: <ApprovedClass></ApprovedClass>
+
       },
       
     ]

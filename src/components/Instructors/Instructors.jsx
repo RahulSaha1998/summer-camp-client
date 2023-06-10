@@ -12,10 +12,6 @@ const Instructors = () => {
 
     const {loading} = useAuth();
 
-    if(loading){
-        return <Loader></Loader>
-    }
-
 
     const handleFavoriteButton = () => {
         toast("WOW! Let's Explore Our Class!");
@@ -34,10 +30,14 @@ const Instructors = () => {
 
     });
 
+    if(loading){
+        return <Loader></Loader>
+    }
+
 
 
     return (
-        <div className='shadow-2xl'>
+        <div className='shadow-2xl rounded-lg'>
             <h2 className='text-3xl font-semibold mt-5 text-center'>Instructors</h2>
             <div className="divider mb-5"></div>
             <div className="overflow-x-auto">
