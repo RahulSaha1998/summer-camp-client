@@ -25,6 +25,8 @@ import ApprovedClass from './components/ApprovedClass/ApprovedClass';
 import MySelectedClass from './components/Dashboard/StudentDashoard/MySelectedClass';
 import MyEnrolledClass from './components/Dashboard/StudentDashoard/MyEnrolledClass';
 import StudentPayment from './components/Dashboard/StudentDashoard/StudentPayment/StudentPayment';
+import PaymentHistory from './components/Dashboard/StudentDashoard/StudentPayment/PaymentHistory';
+
 
 
 
@@ -70,6 +72,10 @@ const router = createBrowserRouter([
         {
           path: 'student/myEnrolledClass',
           element: <MyEnrolledClass></MyEnrolledClass>,
+        },
+        {
+          path: 'student/paymentHistory',
+          element: <PaymentHistory></PaymentHistory>,
         },
         {
           path: 'student/payment/:id',

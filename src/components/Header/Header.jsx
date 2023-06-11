@@ -17,19 +17,25 @@ const Header = () => {
 
 
     const navItems = <>
-        
+
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
         <li> <Link className='font-semibold' to="/instructors">Instructors</Link> </li>
         <li> <Link className='font-semibold' to="/classes">Classes</Link> </li>
         {user && <>
             <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
         </>}
+
+
+
+
+
+
     </>
 
     const btn = <>
         <button onClick={handleLogOut} className='btn btn-info'>Log out</button>
     </>
-// fixed z-10 bg-opacity-30
+    // fixed z-10 bg-opacity-30
     return (
         <div className="navbar z-10 bg-opacity-30 h-28 mb-4 rounded-lg shadow-xl">
             <div className="navbar-start">
@@ -44,7 +50,7 @@ const Header = () => {
                 </div>
 
                 <div className='flex items-center'>
-                    
+
                     <div className='w-14 lg:w-52'>
                         <h2 className='font-bold lg:text-3xl'>SUMMER <span className='text-red-600 font-semibold'>CAMP</span></h2>
                     </div>
@@ -57,7 +63,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-            <div className=' flex items-center gap-4'>
+                <div className=' flex items-center gap-4'>
                     {
                         user?.email ? <>
 

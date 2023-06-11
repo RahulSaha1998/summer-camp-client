@@ -106,6 +106,7 @@ const PaymentCheckoutForm = ({ price, loadedData }) => {
                           })
                     }
                 })
+                
         }
 
 

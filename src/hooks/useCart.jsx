@@ -18,10 +18,3 @@ const useCart = () => {
 
 }
 export default useCart;
-
-// queryFn: async () => {
-        //     const res = await fetch(`https://bistro-boss-server-fawn.vercel.app/carts?email=${user?.email}`, { headers: {
-        //         authorization: `bearer ${token}`
-        //     }})
-        //     return res.json();
-        // },
