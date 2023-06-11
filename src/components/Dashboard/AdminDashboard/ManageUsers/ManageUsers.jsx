@@ -74,8 +74,8 @@ const ManageUsers = () => {
     return (
         <div className='w-full h-full'>
             <div className="overflow-x-auto">
-            <SectionTitle heading='Manage Users' />
-            <div className="overflow-x-auto m-8 card shadow-2xl">
+                <SectionTitle heading='Manage Users' />
+                <div className="overflow-x-auto m-8 card shadow-2xl">
                     <table className="table table-zebra w-full">
                         {/* head */}
                         <thead>
@@ -98,11 +98,11 @@ const ManageUsers = () => {
                                         <td className="text-center">{user.role}</td>
                                         <td className="text-center"><button
                                             onClick={() => handelMakeInstructor(user)}
-                                            disabled={user.role === 'instructor' || user.role === 'admin'}
+                                            disabled={user.role === 'instructor'}
                                             className="btn btn-success">Make Instructor</button></td>
-                                        <td><button
+                                        <td className='text-center'><button
                                             onClick={() => handelMakeAdmin(user)}
-                                            disabled={user.role === 'instructor' || user.role === 'admin'}
+                                            disabled={user.role === 'admin'}
                                             className="btn btn-info">Make Admin</button></td>
                                     </tr>)
                             }
