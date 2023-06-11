@@ -8,14 +8,14 @@ import ApprovedClass from "../components/ApprovedClass/ApprovedClass";
 
 const Dashboard = () => {
 
-    const {loading} = useAuth();
-    
-    if(loading){
+    const { loading } = useAuth();
+
+    if (loading) {
         return <Loader></Loader>
     }
 
-    const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
 
 
     return (
@@ -29,20 +29,20 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
                     {
-                        isAdmin ? <>
-                            <li><NavLink to='/dashboard/admin/home' className='font-semibold'><FaPlusCircle />Admin Home</NavLink></li>
-                            <li><NavLink to='/dashboard/admin/manageClass' className='font-semibold'><FaPlusCircle />Manage class</NavLink></li>
+                        isAdmin || isAdminLoading ? <>
+                            <li><NavLink to='/dashboard/admin/manageClass' className='font-semibold'><FaPlusCircle />Manage Class</NavLink></li>
                             <li><NavLink to='/dashboard/admin/manageUsers' className='font-semibold'><FaUsers />Manage Users</NavLink></li>
+
                         </>
-                            : isInstructor ? <>
-                                <li><NavLink to='/dashboard/instructor/addClass' className='font-semibold'><FaPlusCircle />Add a class</NavLink></li>
+                            : isInstructor || isInstructorLoading ? <>
                                 <li><NavLink to='/dashboard/instructor/myClass' className='font-semibold'><FaSave />My Class</NavLink></li>
+                                <li><NavLink to='/dashboard/instructor/addClass' className='font-semibold'><FaPlusCircle />Add a class</NavLink></li>
                             </>
                                 : <>
                                     <li><NavLink to='/dashboard/student/mySelectedClass' className='font-semibold'><FaPlusCircle />My Selected Class</NavLink></li>
                                     <li><NavLink to='/dashboard/student/myEnrolledClass' className='font-semibold'><FaPlusCircle />My Enrolled Class</NavLink></li>
                                     <li><NavLink to='/dashboard/student/paymentHistory' className='font-semibold'><FaPlusCircle />Payment History</NavLink></li>
-                                
+
                                 </>
                     }
 

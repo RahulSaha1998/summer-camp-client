@@ -1,11 +1,16 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 
 const Header = () => {
 
     const { user, logOut } = useContext(AuthContext);
+
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
 
     const handleLogOut = () => {
         logOut()
@@ -21,9 +26,21 @@ const Header = () => {
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
         <li> <Link className='font-semibold' to="/instructors">Instructors</Link> </li>
         <li> <Link className='font-semibold' to="/classes">Classes</Link> </li>
-        {user && <>
+        {/* {user && <>
             <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
-        </>}
+        </>} */}
+
+        {
+            isAdmin || isAdminLoading ? <>
+                <li><Link className='font-semibold' to="/dashboard/admin/manageClass">Dashboard</Link></li>
+            </>
+                : isInstructor || isInstructorLoading ? <>
+                    <li><Link className='font-semibold' to="/dashboard/instructor/myClass">Dashboard</Link></li>
+                </>
+                    : <>
+                        <li><Link className='font-semibold' to="/dashboard/student/mySelectedClass">Dashboard</Link></li>
+                    </>
+        }
 
 
 

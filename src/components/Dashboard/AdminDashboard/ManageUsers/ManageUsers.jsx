@@ -4,6 +4,7 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import SectionTitle from '../../../SectionTitle/SectionTitle';
 
 const ManageUsers = () => {
 
@@ -71,42 +72,44 @@ const ManageUsers = () => {
     }
 
     return (
-        <div>
-            <h2 className='text-3xl font-semibold'>Total users: {users.length}</h2>
+        <div className='w-full h-full'>
             <div className="overflow-x-auto">
-                <table className="table table-zebra">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th className='text-center'>Serial</th>
-                            <th className='text-center'>Name</th>
-                            <th className=''>Email</th>
-                            <th className='text-center'>Role</th>
-                            <th className='text-center'>Action 1</th>
-                            <th className='text-center'>Action 2</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            users.map((user, index) =>
-                                <tr key={user._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.role}</td>
-                                    <td><button
-                                        onClick={() => handelMakeInstructor(user)}
-                                        disabled={user.role === 'instructor' || user.role === 'admin'}
-                                        className="btn btn-outline btn-primary">Make Instructor</button></td>
-                                    <td><button
-                                        onClick={() => handelMakeAdmin(user)}
-                                        disabled={user.role === 'instructor' || user.role === 'admin'}
-                                        className="btn btn-outline btn-primary">Make Admin</button></td>
-                                </tr>)
-                        }
+            <SectionTitle heading='Manage Users' />
+            <div className="overflow-x-auto m-8 card shadow-2xl">
+                    <table className="table table-zebra w-full">
+                        {/* head */}
+                        <thead>
+                            <tr className='bg-cyan-400 text-slate-800'>
+                                <th className='text-center'>Serial</th>
+                                <th className='text-center'>Name</th>
+                                <th className='text-center'>Email</th>
+                                <th className='text-center'>Role</th>
+                                <th className='text-center'>Instructor</th>
+                                <th className='text-center'>Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users.map((user, index) =>
+                                    <tr key={user._id} className='font-bold'>
+                                        <th className="text-center">{index + 1}</th>
+                                        <td className="text-center">{user.name}</td>
+                                        <td className="text-center">{user.email}</td>
+                                        <td className="text-center">{user.role}</td>
+                                        <td className="text-center"><button
+                                            onClick={() => handelMakeInstructor(user)}
+                                            disabled={user.role === 'instructor' || user.role === 'admin'}
+                                            className="btn btn-success">Make Instructor</button></td>
+                                        <td><button
+                                            onClick={() => handelMakeAdmin(user)}
+                                            disabled={user.role === 'instructor' || user.role === 'admin'}
+                                            className="btn btn-info">Make Admin</button></td>
+                                    </tr>)
+                            }
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

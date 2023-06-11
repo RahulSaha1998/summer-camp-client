@@ -26,7 +26,7 @@ const MyEnrolledClass = () => {
 
 
     return (
-        <div className='w-full he-full'>
+        <div className='w-full h-full'>
             <div className="overflow-x-auto shadow-xl">
                 <SectionTitle heading='Enrolled Class' />
                 <div className="overflow-x-auto m-8 card shadow-2xl">
