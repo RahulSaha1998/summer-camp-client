@@ -7,14 +7,14 @@ import useInstructor from '../../hooks/useInstructor';
 
 const Header = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, setLoading } = useContext(AuthContext);
 
     const [isAdmin, isAdminLoading] = useAdmin();
     const [isInstructor, isInstructorLoading] = useInstructor();
 
     const handleLogOut = () => {
         logOut()
-            .then()
+            .then(()=>setLoading(false))
             .catch(error => {
                 console.log(error)
             })

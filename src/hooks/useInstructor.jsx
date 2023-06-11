@@ -8,7 +8,7 @@ const useInstructor = () => {
 
   const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
     queryKey: ['isInstructor', user?.email],
-    enabled: !loading,
+    enabled: !loading && !!user?.email,
     queryFn: async () => {
       const res = await axios.get(`http://localhost:5000/users/instructor/${user?.email}`, {
         headers: {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import React, { useRef, useState } from 'react';
 import SectionTitle from '../../../SectionTitle/SectionTitle';
-
+import { Fade } from 'react-awesome-reveal';
 
 
 const ManageClass = () => {
@@ -108,6 +108,7 @@ const ManageClass = () => {
             <div className="overflow-x-auto shadow-xl">
                 <SectionTitle heading='Manage Class' />
                 <div className='overflow-x-auto m-8 card shadow-2xl'>
+                    <Fade>
                     <table className="table table-zebra w-full">
                         <thead>
                             <tr className='bg-cyan-400 text-slate-800'>
@@ -186,6 +187,8 @@ const ManageClass = () => {
                                 ))}
                         </tbody>
                     </table>
+                    </Fade>
+                    
                 </div>
             </div>
         </div>

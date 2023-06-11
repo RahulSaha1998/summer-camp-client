@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import SectionTitle from '../../SectionTitle/SectionTitle';
+import { Fade } from 'react-awesome-reveal';
+
 
 const MySelectedClass = () => {
 
@@ -55,66 +57,68 @@ const MySelectedClass = () => {
                 <SectionTitle heading='Selected Class' />
             </div>
             <div className="overflow-x-auto m-8 card shadow-2xl">
-                <table className="table table-zebra w-full">
-                    <thead>
-                        <tr className='bg-cyan-400 text-slate-800'>
-                            <th className='text-center'>Serial</th>
-                            <th className='text-center'>Photo</th>
-                            <th className='text-center'>Class Name</th>
-                            <th className='text-center'>Instructor Name</th>
-                            <th className='text-center'>Instructor Email</th>
-                            <th className='text-center'>Seat</th>
-                            <th className='text-center'>Price</th>
-                            <th className='text-center'>Payment</th>
-                            <th className='text-center'>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Fade>
+                    <table className="table table-zebra w-full">
+                        <thead>
+                            <tr className='bg-cyan-400 text-slate-800'>
+                                <th className='text-center'>Serial</th>
+                                <th className='text-center'>Photo</th>
+                                <th className='text-center'>Class Name</th>
+                                <th className='text-center'>Instructor Name</th>
+                                <th className='text-center'>Instructor Email</th>
+                                <th className='text-center'>Seat</th>
+                                <th className='text-center'>Price</th>
+                                <th className='text-center'>Payment</th>
+                                <th className='text-center'>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        {
-                            cart.map((item, index) => (
+                            {
+                                cart.map((item, index) => (
 
-                                <tr key={item._id} className="font-bold">
-                                    <td className="rounded-lg text-center">{index + 1}</td>
-                                    <td className="text-center">
-                                        <div className="avatar">
-                                            <div className="rounded w-24">
-                                                {item.image && <img src={item.image} alt="" />}
+                                    <tr key={item._id} className="font-bold">
+                                        <td className="rounded-lg text-center">{index + 1}</td>
+                                        <td className="text-center">
+                                            <div className="avatar">
+                                                <div className="rounded w-24">
+                                                    {item.image && <img src={item.image} alt="" />}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td className="text-center ">{item.class_name}</td>
-                                    <td className="text-center">{item.instructor_name}</td>
-                                    <td className="text-center">{item.ins_email}</td>
-                                    <td className="text-center">{item.seat}</td>
-                                    <td className="text-center">{'$' + item.price}</td>
-                                    <td className="text-center">
-                                        {/* <Link to='/dashboard/student/payment'>
+                                        </td>
+                                        <td className="text-center ">{item.class_name}</td>
+                                        <td className="text-center">{item.instructor_name}</td>
+                                        <td className="text-center">{item.ins_email}</td>
+                                        <td className="text-center">{item.seat}</td>
+                                        <td className="text-center">{'$' + item.price}</td>
+                                        <td className="text-center">
+                                            {/* <Link to='/dashboard/student/payment'>
                                         <button
                                         onClick={()=>handelPayment(item.price)}
                                             className="text-center btn btn-info">Pay</button>
                                         </Link> */}
-                                        <Link
-                                            to={`/dashboard/student/payment/${item._id}`}
-                                        >
-                                            <button
-                                                onClick={() => handelPayment(item._id)}
-                                                className="text-center btn btn-info"
+                                            <Link
+                                                to={`/dashboard/student/payment/${item._id}`}
                                             >
-                                                Pay
-                                            </button>
-                                        </Link>
+                                                <button
+                                                    onClick={() => handelPayment(item._id)}
+                                                    className="text-center btn btn-info"
+                                                >
+                                                    Pay
+                                                </button>
+                                            </Link>
 
-                                    </td>
-                                    <td className="text-center">
-                                        <button
-                                            onClick={() => handelDeleteClass(item._id)}
-                                            className="text-center btn btn-info"><FaTrashAlt /></button>
-                                    </td>
-                                </tr>
-                            ))}
-                    </tbody>
-                </table>
+                                        </td>
+                                        <td className="text-center">
+                                            <button
+                                                onClick={() => handelDeleteClass(item._id)}
+                                                className="text-center btn btn-info"><FaTrashAlt /></button>
+                                        </td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
+                </Fade>
             </div>
         </div>
     );

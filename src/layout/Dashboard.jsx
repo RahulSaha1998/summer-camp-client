@@ -14,8 +14,8 @@ const Dashboard = () => {
         return <Loader></Loader>
     }
 
-    const [isAdmin, isAdminLoading] = useAdmin();
-    const [isInstructor, isInstructorLoading] = useInstructor();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
 
     return (
@@ -29,12 +29,12 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
                     {
-                        isAdmin || isAdminLoading ? <>
+                        isAdmin? <>
                             <li><NavLink to='/dashboard/admin/manageClass' className='font-semibold'><FaPlusCircle />Manage Class</NavLink></li>
                             <li><NavLink to='/dashboard/admin/manageUsers' className='font-semibold'><FaUsers />Manage Users</NavLink></li>
 
                         </>
-                            : isInstructor || isInstructorLoading ? <>
+                            : isInstructor? <>
                                 <li><NavLink to='/dashboard/instructor/myClass' className='font-semibold'><FaSave />My Class</NavLink></li>
                                 <li><NavLink to='/dashboard/instructor/addClass' className='font-semibold'><FaPlusCircle />Add a class</NavLink></li>
                             </>

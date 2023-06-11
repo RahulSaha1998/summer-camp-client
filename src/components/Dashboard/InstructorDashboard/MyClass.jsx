@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import MyClassBody from "./MyClassBody";
 import useAuth from "../../../hooks/useAuth";
 import SectionTitle from "../../SectionTitle/SectionTitle";
+import { Fade } from 'react-awesome-reveal';
+
 
 
 const MyClass = () => {
@@ -29,32 +31,34 @@ const MyClass = () => {
             <div className="overflow-x-auto">
                 <SectionTitle heading='My Class' />
                 <div className="overflow-x-auto m-8 card shadow-2xl">
-                    <table className="table table-zebra w-full">
-                        <thead>
-                            <tr className="bg-cyan-400 text-slate-800">
-                                <th className='text-center'>Serial</th>
-                                <th className='text-center'>Photo</th>
-                                <th className='text-center'>Class Name</th>
-                                <th className='text-center'>Instructor Name</th>
-                                <th className='text-center'>Instructor Email</th>
-                                <th className='text-center'>Seat</th>
-                                <th className='text-center'>Price</th>
-                                <th className='text-center'>Status</th>
-                                <th className='text-center'>Enrolled Class</th>
-                                <th className='text-center'>Feedback</th>
-                                <th className='text-center'>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {classItems.map((ct, index) => (
-                                <MyClassBody
-                                    key={ct._id}
-                                    index={index}
-                                    ct={ct}
-                                />
-                            ))}
-                        </tbody>
-                    </table>
+                    <Fade>
+                        <table className="table table-zebra w-full">
+                            <thead>
+                                <tr className="bg-cyan-400 text-slate-800">
+                                    <th className='text-center'>Serial</th>
+                                    <th className='text-center'>Photo</th>
+                                    <th className='text-center'>Class Name</th>
+                                    <th className='text-center'>Instructor Name</th>
+                                    <th className='text-center'>Instructor Email</th>
+                                    <th className='text-center'>Seat</th>
+                                    <th className='text-center'>Price</th>
+                                    <th className='text-center'>Status</th>
+                                    <th className='text-center'>Enrolled Class</th>
+                                    <th className='text-center'>Feedback</th>
+                                    <th className='text-center'>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {classItems.map((ct, index) => (
+                                    <MyClassBody
+                                        key={ct._id}
+                                        index={index}
+                                        ct={ct}
+                                    />
+                                ))}
+                            </tbody>
+                        </table>
+                    </Fade>
                 </div>
             </div>
         </div>

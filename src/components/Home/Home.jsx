@@ -3,6 +3,7 @@ import Loader from "../Loader/Loader";
 import Banner from "../Banner/Banner";
 import useAuth from "../../hooks/useAuth";
 import DarkMode from "../../DarkMode/DarkMode";
+import PopularClass from "../PopularClass/PopularClass";
 
 const Home = () => {
 
@@ -14,13 +15,11 @@ const Home = () => {
 
     return (
         <>
-        <div>
-            <DarkMode></DarkMode>
-        </div>
             <div>
-                <div>
-                    <Banner></Banner>
-                </div>
+                <Banner></Banner>
+            </div>
+            <div className="mt-5">
+                <PopularClass></PopularClass>
             </div>
         </>
 

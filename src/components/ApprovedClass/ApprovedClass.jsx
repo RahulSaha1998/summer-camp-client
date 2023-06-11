@@ -21,8 +21,6 @@ const ApprovedClass = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    // const [cart] = useCart();
-
 
 
     const token = localStorage.getItem('access-token');
@@ -76,16 +74,25 @@ const ApprovedClass = () => {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'You have successfully enrolled the class!',
+                            title: 'You have added the class Successfully!',
                             showConfirmButton: false,
                             timer: 1500
                         })
                     }
                 })
+                .catch(error=>{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: "You Can't select a Single class Twice!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
         }
         else {
             Swal.fire({
-                title: 'You have to login first to enroll the class!',
+                title: 'You have to login first to added the class!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -124,12 +131,12 @@ const ApprovedClass = () => {
                                 <div className="card-actions justify-between">
                                     <button
                                         onClick={handleFavoriteButton}
-                                        className="btn btn-outline btn-info"><FaHeart /></button>
+                                        className="btn btn-info"><FaHeart /></button>
                                     <button
                                         onClick={() => handelEnroll(item)}
                                         className="btn btn-info"
                                         disabled={item.seat === 0 || isAdmin || isInstructor }
-                                    >Enroll<FaArrowRight /></button>
+                                    >Select<FaArrowRight /></button>
                                 </div>
                             </div>
                         </div>
