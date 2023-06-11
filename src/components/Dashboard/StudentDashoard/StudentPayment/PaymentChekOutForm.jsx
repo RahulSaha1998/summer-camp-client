@@ -91,12 +91,12 @@ const PaymentCheckoutForm = ({ price, loadedData }) => {
                 classId: loadedData.classId,
                 cartId: loadedData._id,
                 date: new Date(),
+                enClass: loadedData.enClass + 1,
             }
             axios.post('http://localhost:5000/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.insertResult.insertedId && res.data.deleteResult.deletedCount === 1) {
-                        // display confirm
+                    if (res.data.insertResult.insertedId && res.data.deleteResult.deletedCount === 1) {                 
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -117,7 +117,7 @@ const PaymentCheckoutForm = ({ price, loadedData }) => {
 
     return (
         <>
-            <form className="w-2/3 m-8" onSubmit={handleSubmit}>
+            <form className="w-2/3 m-8 lg:mx-auto" onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {

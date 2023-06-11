@@ -15,13 +15,13 @@ const StudentPayment = () => {
 
 
     return (
-        <div className='w-full'>
+        <div className='w-full h-full'>
             <SectionTitle subHeading='Please pay for your selected class' heading='Payment' />
-            <h2>Hello from payment</h2>
-            <p>Total Price: {price}</p>
-            <Elements stripe={stripePromise}>
-                <PaymentCheckoutForm price={price} loadedData={loadedData}></PaymentCheckoutForm>
-            </Elements>
+            <div className='bg-base-200 p-8 m-8 card shadow-2xl '>
+                <Elements stripe={stripePromise}>
+                    <PaymentCheckoutForm price={price} loadedData={loadedData}></PaymentCheckoutForm>
+                </Elements>
+            </div>
         </div>
     );
 };
