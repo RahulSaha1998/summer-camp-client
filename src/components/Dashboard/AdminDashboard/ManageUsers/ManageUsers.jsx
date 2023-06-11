@@ -82,7 +82,7 @@ const ManageUsers = () => {
                         <table className="table table-zebra w-full">
                             {/* head */}
                             <thead>
-                                <tr className='bg-cyan-400 text-slate-800'>
+                                <tr className='bg-slate-400 text-slate-800'>
                                     <th className='text-center'>Serial</th>
                                     <th className='text-center'>Name</th>
                                     <th className='text-center'>Email</th>

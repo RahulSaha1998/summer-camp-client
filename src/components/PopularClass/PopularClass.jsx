@@ -2,9 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../Loader/Loader';
-import { FaHeart } from 'react-icons/fa';
+import { FaArrowRight, FaHeart } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import SectionTitle from '../SectionTitle/SectionTitle';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
+import Swal from 'sweetalert2';
 
 
 
@@ -12,6 +16,11 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 const PopularClass = () => {
     const { loading, user } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
 
     const token = localStorage.getItem('access-token');
@@ -33,6 +42,71 @@ const PopularClass = () => {
         toast("WOW! Let's Explore Our Class!");
     };
 
+    const handelEnroll = item => {
+
+        console.log(item);
+
+        if (user && user.email) {
+            const cartItem = {
+                classId: item._id,
+                class_name: item.class_name,
+                instructor_name: item.instructor_name,
+                image: item.image,
+                email: user.email,
+                price: item.price,
+                seat: item.seat,
+                ins_email: item.email,
+                enClass: item.enClass
+            }
+
+            fetch('http://localhost:5000/carts', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(cartItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        refetch();
+                        // setEnrolledClasses([...enrolledClasses, cartItem]);
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'You have added the class Successfully!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+                .catch(error=>{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: "You Can't select a Single class Twice!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'You have to login first to added the class!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
+
+    }
+
     
 
 
@@ -51,7 +125,7 @@ const PopularClass = () => {
                                 <img className='h-52 w-full' src={item.image} alt={item.class_name} />
                             </figure>
                             <div className="card-body font-bold">
-                                <h2 className="card-title">{item.class_name}</h2>
+                                <h2 className="card-title"><span className='text-red-600'>Class:</span>{item.class_name}</h2>
                                 <p><span className='text-red-600'>Instructor :</span> {item.instructor_name}</p>
                                 <p><span className='text-red-600'>Seat :</span> {item.seat}</p>
                                 <p><span className='text-red-600'>Price :</span> ${item.price}</p>
@@ -60,6 +134,11 @@ const PopularClass = () => {
                                     <button
                                         onClick={handleFavoriteButton}
                                         className="btn btn-info"><FaHeart /></button>
+                                        <button
+                                        onClick={() => handelEnroll(item)}
+                                        className="btn btn-info"
+                                        disabled={item.seat === 0 || isAdmin || isInstructor }
+                                    >Select<FaArrowRight /></button>
                                 </div>
                             </div>
                         </div>

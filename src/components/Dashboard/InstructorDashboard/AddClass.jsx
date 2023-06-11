@@ -102,7 +102,9 @@ const AddClass = () => {
                             </label>
                             <input type="text" placeholder="Class Name"
                                 name='name'
-                                className="input input-bordered" />
+                                className="input input-bordered" 
+                                required
+                                />
                         </div>
                         <div className="form-control">
                             <label className="label">
