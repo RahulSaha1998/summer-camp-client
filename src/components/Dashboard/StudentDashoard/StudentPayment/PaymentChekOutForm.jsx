@@ -95,7 +95,7 @@ const PaymentCheckoutForm = ({ price, loadedData }) => {
             axios.post('http://localhost:5000/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.insertedId) {
+                    if (res.data.insertResult.insertedId && res.data.deleteResult.deletedCount === 1) {
                         // display confirm
                         Swal.fire({
                             position: 'center',
