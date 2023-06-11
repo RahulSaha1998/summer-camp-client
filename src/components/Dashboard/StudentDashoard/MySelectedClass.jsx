@@ -60,7 +60,7 @@ const MySelectedClass = () => {
                 <Fade>
                     <table className="table table-zebra w-full">
                         <thead>
-                            <tr className='bg-cyan-400 text-slate-800'>
+                            <tr className='bg-slate-400 text-slate-800'>
                                 <th className='text-center'>Serial</th>
                                 <th className='text-center'>Photo</th>
                                 <th className='text-center'>Class Name</th>

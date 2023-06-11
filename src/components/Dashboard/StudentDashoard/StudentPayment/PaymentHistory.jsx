@@ -36,7 +36,7 @@ const PaymentHistory = () => {
                 <Fade>
                     <table className="table table-zebra w-full">
                         <thead className='m-5'>
-                            <tr className='bg-cyan-400 text-slate-800 rounded-2xl'>
+                            <tr className='bg-slate-400 text-black rounded-2xl'>
                                 <th className='text-center'>Serial</th>
                                 <th className='text-center'>Class Name</th>
                                 <th className='text-center'>Price</th>

@@ -46,7 +46,7 @@ const ManageClass = () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Feedback updated!',
+                    title: 'Feedback send successfully!',
                     showConfirmButton: false,
                     timer: 1500,
                 });
@@ -161,10 +161,10 @@ const ManageClass = () => {
                                                     ></textarea>
 
                                                     <div className="modal-action">
-                                                        <button className="btn" onClick={handleCloseModal}>
+                                                        <button className="btn btn-active btn-neutral" onClick={handleCloseModal}>
                                                             Close
                                                         </button>
-                                                        <button className="btn" onClick={handleUpdateFeedback}>
+                                                        <button className="btn btn-info" onClick={handleUpdateFeedback}>
                                                             Update
                                                         </button>
                                                     </div>

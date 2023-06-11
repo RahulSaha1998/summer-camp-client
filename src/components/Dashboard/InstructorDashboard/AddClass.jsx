@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Fade} from 'react-awesome-reveal';
+import SectionTitle from "../../SectionTitle/SectionTitle";
 
 
 
@@ -86,12 +87,12 @@ const AddClass = () => {
 
 
     return (
-        <div className='bg-slate-200 rounded-lg shadow-xl mt-5 '>
-            <div className='text-center'>
-                <h2 className='font-semibold text-center text-3xl text-red-600 mt-5'>Add Class</h2>
-                <hr />
-                <div className="divider"></div>
+        <div className="h-full">
+            <div>
+            <SectionTitle heading='Add Class' />
             </div>
+            <div className='bg-slate-200 rounded-lg shadow-xl mt-5 '>
+            
             <Fade>
                 <form onSubmit={handelAddClass} className='w-[80%] mx-auto '>
                     <div className='grid grid-cols-2 gap-5'>
@@ -159,6 +160,7 @@ const AddClass = () => {
                     </div>
                 </form>
             </Fade>
+        </div>
         </div>
 
     );

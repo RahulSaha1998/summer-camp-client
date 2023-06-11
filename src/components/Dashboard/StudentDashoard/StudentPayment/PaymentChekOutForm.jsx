@@ -1,16 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-
-import './CheckoutForm.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const PaymentCheckoutForm = ({ price, loadedData }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
+    const navigate = useNavigate();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
@@ -104,6 +104,7 @@ const PaymentCheckoutForm = ({ price, loadedData }) => {
                             showConfirmButton: false,
                             timer: 1500
                           })
+                          navigate('/dashboard/student/myEnrolledClass');
                     }
                 })
                 
