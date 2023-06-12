@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { registerUser, updateUserData, logOut } = useContext(AuthContext);
@@ -57,6 +58,9 @@ const Register = () => {
 
     return (
         <div className="grid md:grid-cols-2 mx-auto">
+            <Helmet>
+                <title>Camp Arena | Registration</title>
+            </Helmet>
             <div>
                 <h2>
                     <Lottie animationData={reg}></Lottie>

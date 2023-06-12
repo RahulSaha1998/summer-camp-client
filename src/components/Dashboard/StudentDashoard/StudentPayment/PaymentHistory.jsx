@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import SectionTitle from '../../../SectionTitle/SectionTitle';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 
 
 const PaymentHistory = () => {
@@ -29,6 +30,9 @@ const PaymentHistory = () => {
 
     return (
         <div className='h-full w-full'>
+            <Helmet>
+                <title>Camp Arena | Payment History</title>
+            </Helmet>
             <div>
                 <SectionTitle heading='payment History' />
             </div>

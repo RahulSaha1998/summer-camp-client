@@ -26,6 +26,7 @@ import MySelectedClass from './components/Dashboard/StudentDashoard/MySelectedCl
 import MyEnrolledClass from './components/Dashboard/StudentDashoard/MyEnrolledClass';
 import StudentPayment from './components/Dashboard/StudentDashoard/StudentPayment/StudentPayment';
 import PaymentHistory from './components/Dashboard/StudentDashoard/StudentPayment/PaymentHistory';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 
@@ -58,61 +59,63 @@ const router = createBrowserRouter([
         path: '/classes',
         element: <ApprovedClass></ApprovedClass>
       },
-      
+
     ]
   },
   {
-      path: '/dashboard',
-      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-      children: [
-        {
-          path: 'student/mySelectedClass',
-          element: <MySelectedClass></MySelectedClass>,
-        },
-        {
-          path: 'student/myEnrolledClass',
-          element: <MyEnrolledClass></MyEnrolledClass>,
-        },
-        {
-          path: 'student/paymentHistory',
-          element: <PaymentHistory></PaymentHistory>,
-        },
-        {
-          path: 'student/payment/:id',
-          element: <StudentPayment></StudentPayment>,
-          loader: ({ params }) => fetch(`http://localhost:5000/carts/${params.id}`)
-        },
-        {
-          path: 'admin/manageClass',
-          element: <AdminRoute><ManageClass></ManageClass></AdminRoute>,
-        },
-        {
-          path: 'admin/manageUsers',
-          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
-        },
-        {
-          path: 'instructor/addClass',
-          element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
-        },
-        {
-          path: 'instructor/myClass',
-          element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
-        },
-        {
-          path: 'instructor/update/:id',
-          element: <InstructorRoute><UpdateClass/></InstructorRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`)
-        }
-      ]
+    path: '/dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: 'student/mySelectedClass',
+        element: <MySelectedClass></MySelectedClass>,
+      },
+      {
+        path: 'student/myEnrolledClass',
+        element: <MyEnrolledClass></MyEnrolledClass>,
+      },
+      {
+        path: 'student/paymentHistory',
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: 'student/payment/:id',
+        element: <StudentPayment></StudentPayment>,
+        loader: ({ params }) => fetch(`http://localhost:5000/carts/${params.id}`)
+      },
+      {
+        path: 'admin/manageClass',
+        element: <AdminRoute><ManageClass></ManageClass></AdminRoute>,
+      },
+      {
+        path: 'admin/manageUsers',
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+      },
+      {
+        path: 'instructor/addClass',
+        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+      },
+      {
+        path: 'instructor/myClass',
+        element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
+      },
+      {
+        path: 'instructor/update/:id',
+        element: <InstructorRoute><UpdateClass /></InstructorRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`)
+      }
+    ]
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      </QueryClientProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </HelmetProvider>
     </AuthProvider>
   </React.StrictMode>
 )

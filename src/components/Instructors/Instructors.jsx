@@ -7,6 +7,7 @@ import { FaHeart } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../Loader/Loader';
 import SectionTitle from '../SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet-async';
 
 
 const Instructors = () => {
@@ -39,6 +40,9 @@ const Instructors = () => {
 
     return (
         <div className='shadow-2xl rounded-lg bg-slate-100'>
+            <Helmet>
+                <title>Camp Arena | Instructors</title>
+            </Helmet>
             <SectionTitle heading='Instructors' />
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

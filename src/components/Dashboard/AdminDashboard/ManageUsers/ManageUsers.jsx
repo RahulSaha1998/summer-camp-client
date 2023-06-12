@@ -6,6 +6,7 @@ import useAuth from '../../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import SectionTitle from '../../../SectionTitle/SectionTitle';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 
 
 const ManageUsers = () => {
@@ -75,6 +76,9 @@ const ManageUsers = () => {
 
     return (
         <div className='w-full h-full'>
+            <Helmet>
+                <title>Camp Arena | Manage Users</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <SectionTitle heading='Manage Users' />
                 <div className="overflow-x-auto m-8 card shadow-2xl">

@@ -3,6 +3,7 @@ import MyClassBody from "./MyClassBody";
 import useAuth from "../../../hooks/useAuth";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -28,6 +29,9 @@ const MyClass = () => {
 
     return (
         <div className='w-full h-full'>
+            <Helmet>
+                <title>Camp Arena | My Class</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <SectionTitle heading='My Class' />
                 <div className="overflow-x-auto m-8 card shadow-2xl">

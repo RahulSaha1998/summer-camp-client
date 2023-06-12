@@ -126,6 +126,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateClass = ({ }) => {
     const classItems = useLoaderData();
@@ -171,6 +172,9 @@ const UpdateClass = ({ }) => {
 
     return (
         <div className='h-full'>
+            <Helmet>
+                <title>Camp Arena | Update Class</title>
+            </Helmet>
             <div>
                 <SectionTitle heading='Update Class'></SectionTitle>
             </div>

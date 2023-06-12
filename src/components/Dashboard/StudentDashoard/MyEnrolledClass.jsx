@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../SectionTitle/SectionTitle';
 import useAuth from '../../../hooks/useAuth';
 import { Fade, Zoom } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 
 
 const MyEnrolledClass = () => {
@@ -29,6 +30,9 @@ const MyEnrolledClass = () => {
 
     return (
         <div className='w-full h-full'>
+            <Helmet>
+                <title>Camp Arena | Enrolled Class</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <SectionTitle heading='Enrolled Class' />
                 <div className="overflow-x-auto m-8 card shadow-2xl">

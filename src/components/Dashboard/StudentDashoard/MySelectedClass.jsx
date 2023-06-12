@@ -5,6 +5,7 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import SectionTitle from '../../SectionTitle/SectionTitle';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 
 
 const MySelectedClass = () => {
@@ -53,6 +54,9 @@ const MySelectedClass = () => {
 
     return (
         <div className='w-full h-full'>
+            <Helmet>
+                <title>Camp Arena | Selected Class</title>
+            </Helmet>
             <div>
                 <SectionTitle heading='Selected Class' />
             </div>

@@ -88,6 +88,9 @@ const AddClass = () => {
 
     return (
         <div className="h-full">
+            <Helmet>
+                <title>Camp Arena | Add Class</title>
+            </Helmet>
             <div>
             <SectionTitle heading='Add Class' />
             </div>

@@ -49,9 +49,9 @@ const Banner = () => {
         <div>
             <AutoplaySlider
                 animation="cubeAnimation"
-                play={true}
+                play={false}
                 cancelOnInteraction={false} // should stop playing on user interaction
-                interval={3000}
+                interval={5000}
             >
                 <div>
                     <img

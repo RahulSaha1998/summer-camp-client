@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import React, { useRef, useState } from 'react';
 import SectionTitle from '../../../SectionTitle/SectionTitle';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 
 
 const ManageClass = () => {
@@ -105,6 +106,9 @@ const ManageClass = () => {
 
     return (
         <div className='w-full h-full'>
+            <Helmet>
+                <title>Camp Arena | Manage Class</title>
+            </Helmet>
             <div className="overflow-x-auto shadow-xl">
                 <SectionTitle heading='Manage Class' />
                 <div className='overflow-x-auto m-8 card shadow-2xl'>
