@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useAdmin from '../../hooks/useAdmin';
 import useInstructor from '../../hooks/useInstructor';
-
+import './Header.css'
 
 const Header = () => {
 
@@ -70,7 +70,7 @@ const Header = () => {
     </>
     // fixed z-10 bg-opacity-30
     return (
-        <div className="navbar z-10 bg-opacity-30 h-28 mb-4 rounded-lg shadow-xl">
+        <div className="navbar h-28 mb-4 rounded-lg shadow-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -6,6 +6,7 @@ import React from 'react';
 import { FaHeart } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../Loader/Loader';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 
 const Instructors = () => {
@@ -37,9 +38,8 @@ const Instructors = () => {
 
 
     return (
-        <div className='shadow-2xl rounded-lg'>
-            <h2 className='text-3xl font-semibold mt-5 text-center'>Instructors</h2>
-            <div className="divider mb-5"></div>
+        <div className='shadow-2xl rounded-lg bg-slate-100'>
+            <SectionTitle heading='Instructors' />
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

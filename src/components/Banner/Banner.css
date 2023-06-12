@@ -1,0 +1,17 @@
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  .text-overlay h2 {
+    font-size: 24px;
+  }
+  
+  .text-overlay p {
+    font-size: 14px;
+  }
+  

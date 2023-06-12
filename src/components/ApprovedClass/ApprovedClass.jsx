@@ -10,6 +10,7 @@ import useCart from '../../hooks/useCart';
 import { useEffect, useState } from 'react';
 import useAdmin from '../../hooks/useAdmin';
 import useInstructor from '../../hooks/useInstructor';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 
 
@@ -110,10 +111,7 @@ const ApprovedClass = () => {
 
     return (
         <div className="overflow-x-auto shadow-lg rounded-xl bg-slate-100">
-            <div className="text-center text-3xl font-bold mb-5">
-                <h2 className='text-3xl font-semibold mt-5 text-center'>Training Courses</h2>
-                <div className="divider mb-5"></div>
-            </div>
+            <SectionTitle heading='All Class' />
             <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-10 p-5'>
                 {
                     approvedClass.map((item) => (
