@@ -4,6 +4,7 @@ import Banner from "../Banner/Banner";
 import useAuth from "../../hooks/useAuth";
 import DarkMode from "../../DarkMode/DarkMode";
 import PopularClass from "../PopularClass/PopularClass";
+import PopularInstructor from "../PopularInstructor/PopularInstructor";
 
 const Home = () => {
 
@@ -20,6 +21,9 @@ const Home = () => {
             </div>
             <div className="mt-5">
                 <PopularClass></PopularClass>
+            </div>
+            <div className="mt-5">
+                <PopularInstructor></PopularInstructor>
             </div>
         </>
 
