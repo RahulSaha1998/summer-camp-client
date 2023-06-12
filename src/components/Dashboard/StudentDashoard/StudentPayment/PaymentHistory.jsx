@@ -16,7 +16,7 @@ const PaymentHistory = () => {
     }, []);
 
     const fetchPayments = () => {
-        const url = `http://localhost:5000/payments?email=${user?.email}`;
+        const url = `https://summer-camp-server-side-five.vercel.app/payments?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -45,8 +45,8 @@ const PaymentHistory = () => {
                                 <th className='text-center'>Class Name</th>
                                 <th className='text-center'>Price</th>
                                 <th className='text-center'>Status</th>
-                                <th className='text-center'>Payment Date</th>
                                 <th className='text-center'>TransactionId</th>
+                                <th className='text-center'>Payment Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,8 +59,8 @@ const PaymentHistory = () => {
                                         <td className="text-center">{item.class_name}</td>
                                         <td className="text-center">{'$' + item.price}</td>
                                         <td className="text-center">{item.status}</td>
-                                        <td className="text-center">{item.date}</td>
                                         <td className="text-center">{item.transactionId}</td>
+                                        <td className="text-center">{item.date}</td>
 
                                     </tr>
                                 ))}

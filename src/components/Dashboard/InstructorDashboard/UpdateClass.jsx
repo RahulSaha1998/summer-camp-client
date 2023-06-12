@@ -25,7 +25,7 @@
 
 //         };
 
-//         fetch(`http://localhost:5000/class/${_id}`, {
+//         fetch(`https://summer-camp-server-side-five.vercel.app/class/${_id}`, {
 //             method: 'PUT',
 //             headers: {
 //                 'content-type': 'application/json'
@@ -148,7 +148,7 @@ const UpdateClass = ({ }) => {
             seat,
         };
 
-        fetch(`http://localhost:5000/class/${_id}`, {
+        fetch(`https://summer-camp-server-side-five.vercel.app/class/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

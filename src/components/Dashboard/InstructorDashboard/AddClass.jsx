@@ -3,6 +3,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Fade} from 'react-awesome-reveal';
 import SectionTitle from "../../SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -51,7 +52,7 @@ const AddClass = () => {
                         image: imgURL
                     };
                     console.log(addedClass);
-                    fetch('http://localhost:5000/class', {
+                    fetch('https://summer-camp-server-side-five.vercel.app/class', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

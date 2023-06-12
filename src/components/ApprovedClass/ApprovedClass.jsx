@@ -28,7 +28,7 @@ const ApprovedClass = () => {
     const token = localStorage.getItem('access-token');
 
     const { data: approvedClass = [], refetch } = useQuery(['approvedClass'], async () => {
-        const res = await axios.get('http://localhost:5000/approvedClass', {
+        const res = await axios.get('https://summer-camp-server-side-five.vercel.app/approvedClass', {
             headers: {
                 authorization: `bearer ${token}`,
             },
@@ -61,7 +61,7 @@ const ApprovedClass = () => {
                 enClass: item.enClass
             }
 
-            fetch('http://localhost:5000/carts', {
+            fetch('https://summer-camp-server-side-five.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

@@ -10,7 +10,7 @@ const useInstructor = () => {
     queryKey: ['isInstructor', user?.email],
     enabled: !loading && !!user?.email,
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/users/instructor/${user?.email}`, {
+      const res = await axios.get(`https://summer-camp-server-side-five.vercel.app/users/instructor/${user?.email}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

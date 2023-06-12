@@ -19,7 +19,7 @@ const PaymentCheckoutForm = ({ price, loadedData }) => {
 
     useEffect(() => {
         if (price > 0) {
-            axios.post('http://localhost:5000/create-payment-intent', { price })
+            axios.post('https://summer-camp-server-side-five.vercel.app/create-payment-intent', { price })
                 .then(res => {
                     setClientSecret(res.data.clientSecret);
                 })
@@ -93,7 +93,7 @@ const PaymentCheckoutForm = ({ price, loadedData }) => {
                 date: new Date(),
                 enClass: loadedData.enClass + 1,
             }
-            axios.post('http://localhost:5000/payments', payment)
+            axios.post('https://summer-camp-server-side-five.vercel.app/payments', payment)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertResult.insertedId && res.data.deleteResult.deletedCount === 1) {                 

@@ -81,7 +81,7 @@ const router = createBrowserRouter([
       {
         path: 'student/payment/:id',
         element: <StudentPayment></StudentPayment>,
-        loader: ({ params }) => fetch(`http://localhost:5000/carts/${params.id}`)
+        loader: ({ params }) => fetch(`https://summer-camp-server-side-five.vercel.app/carts/${params.id}`)
       },
       {
         path: 'admin/manageClass',
@@ -102,7 +102,7 @@ const router = createBrowserRouter([
       {
         path: 'instructor/update/:id',
         element: <InstructorRoute><UpdateClass /></InstructorRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`)
+        loader: ({ params }) => fetch(`https://summer-camp-server-side-five.vercel.app/class/${params.id}`)
       }
     ]
   },

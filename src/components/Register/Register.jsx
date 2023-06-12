@@ -30,7 +30,7 @@ const Register = () => {
             await updateUserData(data.name, data.photoURL);
 
             const saveUser = { name: data.name, email: data.email, role: role, image: data.photoURL };
-            const response = await fetch('http://localhost:5000/users', {
+            const response = await fetch('https://summer-camp-server-side-five.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -67,7 +67,7 @@ const Register = () => {
                 </h2>
             </div>
             <div className="hero">
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-300">
                     <div className="card-body">
                         <h1 className="text-3xl text-center font-bold">Register Here!</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
