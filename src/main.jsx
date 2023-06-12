@@ -27,6 +27,7 @@ import MyEnrolledClass from './components/Dashboard/StudentDashoard/MyEnrolledCl
 import StudentPayment from './components/Dashboard/StudentDashoard/StudentPayment/StudentPayment';
 import PaymentHistory from './components/Dashboard/StudentDashoard/StudentPayment/PaymentHistory';
 import { HelmetProvider } from 'react-helmet-async';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 
 
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`)
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFoundPage></NotFoundPage>
   }
 ]);
 
