@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 
 
 
+
 const PopularClass = () => {
     const { loading, user } = useAuth();
     const navigate = useNavigate();

@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader';
 import { FaHeart } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import SectionTitle from '../SectionTitle/SectionTitle';
+import Marquee from "react-fast-marquee";
 
 
 
@@ -40,27 +41,31 @@ const PopularInstructor = () => {
 
 
     return (
-        <div className="overflow-x-auto shadow-lg rounded-xl bg-slate-100">
+        <div>
             <div className="text-center text-3xl font-bold mb-5">
                 <SectionTitle heading='Popular Instructor' />
             </div>
-            <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-10 p-5'>
-                {
-                    instructors.map((item) => (
-                        <div
-                            key={item._id}
-                            className='card w-full bg-base-100 shadow-xl'>
-                            <figure>
-                                <img className='h-52 w-full' src={item.image} alt={item.class_name} />
-                            </figure>
-                                <div className="card-body font-bold">
-                                    <p><span className='text-red-600'>Name: </span>{item.name}</p>
-                                    <p><span className='text-red-600'>Email :</span> {item.email}</p>
+            <Marquee>
+                <div className="overflow-x-auto shadow-lg rounded-xl bg-slate-100">
+                    <div className='flex gap-10 p-5'>
+                        {
+                            instructors.map((item) => (
+                                <div
+                                    key={item._id}
+                                    className='card w-full bg-base-100 shadow-xl'>
+                                    <figure>
+                                        <img className='h-52 w-full' src={item.image} alt={item.class_name} />
+                                    </figure>
+                                    <div className="card-body font-bold">
+                                        <p><span className='text-red-600'>Name: </span>{item.name}</p>
+                                        <p><span className='text-red-600'>Email :</span> {item.email}</p>
+                                    </div>
                                 </div>
-                        </div>
-                    ))
-                }
-            </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </Marquee>
         </div>
     );
 };
