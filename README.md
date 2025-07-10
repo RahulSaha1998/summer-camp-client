@@ -5,7 +5,7 @@
 
 - First, we create a navbar that contains a name and some links, and the navbar and footer are common for all the routes except the 404 page.
 - Then the banner section with React Swiper slider.
-- Then the popular class section those most are enrolled.
+- Then the popular class section where most are enrolled.
 - Then the popular instructor section with a marque.
 - and then a blog,
 - and some animations,
