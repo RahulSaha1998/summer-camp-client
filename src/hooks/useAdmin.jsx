@@ -13,7 +13,7 @@ const useAdmin = () => {
         enabled: !loading && !!user?.email,
         queryFn: async () => {
             if (user?.email) {
-                const res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`, {
+                const res = await axios.get(`https://summer-camp-server-main.vercel.app/users/admin/${user?.email}`, {
                     headers: {
                         authorization: `bearer ${token}`
                     }

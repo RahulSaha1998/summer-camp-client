@@ -14,7 +14,7 @@ const ManageClass = () => {
     const [selectedItemId, setSelectedItemId] = useState(null);
 
     const { data: cart = [], refetch } = useQuery(['class'], async () => {
-        const res = await axios.get('http://localhost:5000/class', {
+        const res = await axios.get('https://summer-camp-server-main.vercel.app/class', {
             headers: {
                 authorization: `bearer ${token}`,
             },
@@ -38,7 +38,7 @@ const ManageClass = () => {
     const handleUpdateFeedback = async () => {
         try {
             const res = await axios.patch(
-                `http://localhost:5000/users/feedback/${selectedItemId}`,
+                `https://summer-camp-server-main.vercel.app/users/feedback/${selectedItemId}`,
                 { feedback }
             );
             if (res.data.modifiedCount) {
@@ -61,7 +61,7 @@ const ManageClass = () => {
 
 
     const handelApproved = (item) => {
-        fetch(`http://localhost:5000/users/status/${item._id}`, {
+        fetch(`https://summer-camp-server-main.vercel.app/users/status/${item._id}`, {
             method: 'PATCH',
 
         })
@@ -82,7 +82,7 @@ const ManageClass = () => {
     }
 
     const handelDenied = (item) => {
-        fetch(`http://localhost:5000/users/denied/${item._id}`, {
+        fetch(`https://summer-camp-server-main.vercel.app/users/denied/${item._id}`, {
             method: 'PATCH',
 
         })

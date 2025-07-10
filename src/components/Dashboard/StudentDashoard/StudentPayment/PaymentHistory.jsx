@@ -16,7 +16,7 @@ const PaymentHistory = () => {
     }, []);
 
     const fetchPayments = () => {
-        const url = `http://localhost:5000/payments?email=${user?.email}`;
+        const url = `https://summer-camp-server-main.vercel.app/payments?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {

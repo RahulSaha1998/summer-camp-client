@@ -52,7 +52,7 @@ const AddClass = () => {
                         image: imgURL
                     };
                     console.log(addedClass);
-                    fetch('http://localhost:5000/class', {
+                    fetch('https://summer-camp-server-main.vercel.app/class', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

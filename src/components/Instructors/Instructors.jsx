@@ -23,7 +23,7 @@ const Instructors = () => {
     const token = localStorage.getItem('access-token');
 
     const { data: instructors = [], refetch } = useQuery(['instructors'], async () => {
-        const res = await axios.get('http://localhost:5000/instructors', {
+        const res = await axios.get('https://summer-camp-server-main.vercel.app/instructors', {
             headers: {
                 authorization: `bearer ${token}`
             }
